@@ -30,22 +30,22 @@ jobs:
     - name: Prepare it
       working-directory: ${{ env.WORKDIR }}
       run: |
-        mkdir {{ env.BUILDDIR }}
+        mkdir ${{ env.BUILDDIR }}
 
     - name: Build it
-      working-directory: ${{ env.WORKDIR }}/{{ env.BUILDDIR }}
+      working-directory: ${{ env.WORKDIR }}/${{ env.BUILDDIR }}
       run: |
         cmake -G "Unix Makefiles" ..
         cmake --build .
         make
       
     - name: Pack it
-      working-directory: ${{ env.WORKDIR }}/{{ env.BUILDDIR }}
+      working-directory: ${{ env.WORKDIR }}/${{ env.BUILDDIR }}
       run: |
         cpack -G "DEB"
 
     - name: Test it
-      working-directory: ${{ env.WORKDIR }}/{{ env.BUILDDIR }}
+      working-directory: ${{ env.WORKDIR }}/${{ env.BUILDDIR }}
       run: |
         pwd
         ls -lh
@@ -56,5 +56,5 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: scantailor.deb
-          path: ${{ github.workspace }}/${{ env.WORKDIR }}/{{ env.BUILDDIR }}/*.deb
+          path: ${{ github.workspace }}/${{ env.WORKDIR }}/${{ env.BUILDDIR }}/*.deb
           retention-days: 3
