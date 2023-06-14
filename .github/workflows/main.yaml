@@ -37,7 +37,8 @@ jobs:
       run: |
         pwd
         cmake -G "Unix Makefiles" ..
-        cmake --build ..
+        echo "DEADBEEF"
+        cmake --build .
         make
         ls -lh
       
