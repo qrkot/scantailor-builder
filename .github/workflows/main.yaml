@@ -3,6 +3,10 @@ name: Let's try to build ScanTailor
 on:
   workflow_dispatch:
   
+env:
+  ST_GIT: https://github.com/4lex4/scantailor-advanced.git
+  WORKDIR: scantailor
+  
 jobs:
   compile:
     runs-on: ubuntu-22.04
@@ -18,3 +22,16 @@ jobs:
           qtbase5-dev libqt5svg5-dev qttools5-dev qttools5-dev-tools \
           libqt5opengl5-dev libpthread-stubs0-dev
   
+    - name: Check it out
+      run: |
+        git clone ${{ env.ST_GIT }} ${{ WORKDIR }}
+        
+    - name: Build it
+      working-directory: ${{ env.WORKDIR }}
+      run: |
+        mkdir build
+        cd build
+        cmake -G "Unix Makefiles" --build ..
+        make
+        ls -lh
+      
