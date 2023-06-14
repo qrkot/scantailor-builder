@@ -30,15 +30,16 @@ jobs:
       working-directory: ${{ env.WORKDIR }}
       run: |
         mkdir build
-        ls -lh
 
     - name: Build it
       working-directory: ${{ env.WORKDIR }}/build
       run: |
-        pwd
         cmake -G "Unix Makefiles" ..
-        echo "DEADBEEF"
         cmake --build .
         make
-        ls -lh
       
+    - name: Pack it
+      working-directory: ${{ env.WORKDIR }}/build
+      run: |
+        cpack -G "DEB"
+        ls -lh
