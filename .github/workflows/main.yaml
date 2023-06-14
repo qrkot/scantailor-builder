@@ -24,7 +24,7 @@ jobs:
   
     - name: Check it out
       run: |
-        git clone ${{ env.ST_GIT }} ${{ WORKDIR }}
+        git clone ${{ env.ST_GIT }} ${{ env.WORKDIR }}
         
     - name: Build it
       working-directory: ${{ env.WORKDIR }}
