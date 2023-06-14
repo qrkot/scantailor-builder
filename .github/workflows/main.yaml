@@ -43,3 +43,16 @@ jobs:
       run: |
         cpack -G "DEB"
         ls -lh
+
+    - name: Test it
+      working-directory: ${{ env.WORKDIR }}/build
+      run: |
+        sudo apt-get install *.deb
+        
+    - name: Keep it
+      run: |
+        uses: actions/upload-artifact@v3
+        with:
+          name: scantailor.deb
+          path: ${{ github.workspace }}/${{ env.WORKDIR }}/build/*.deb
+          retention-days: 3
