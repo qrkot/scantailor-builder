@@ -29,14 +29,14 @@ jobs:
     - name: Prepare it
       working-directory: ${{ env.WORKDIR }}
       run: |
-        ls -lh
         mkdir build
+        ls -lh
 
     - name: Build it
       working-directory: ${{ env.WORKDIR }}/build
       run: |
+        pwd
         cmake -G "Unix Makefiles" ..
-        cmake ..
         cmake --build ..
         make
         ls -lh
