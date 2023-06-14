@@ -52,9 +52,8 @@ jobs:
         sudo apt-get install ./*.deb
         
     - name: Keep it
-      run: |
-        uses: actions/upload-artifact@v3
-        with:
-          name: scantailor.deb
-          path: ${{ github.workspace }}/${{ env.WORKDIR }}/${{ env.BUILDDIR }}/*.deb
-          retention-days: 3
+      uses: actions/upload-artifact@v3
+      with:
+        name: scantailor.deb
+        path: ${{ github.workspace }}/${{ env.WORKDIR }}/${{ env.BUILDDIR }}/*.deb
+        retention-days: 3
