@@ -26,11 +26,15 @@ jobs:
       run: |
         git clone ${{ env.ST_GIT }} ${{ env.WORKDIR }}
         
-    - name: Build it
+    - name: Prepare it
       working-directory: ${{ env.WORKDIR }}
       run: |
         ls -lh
-        mkdir build && cd build
+        mkdir build
+
+    - name: Build it
+      working-directory: ${{ env.WORKDIR }}/build
+      run: |
         cmake -G "Unix Makefiles" ..
         cmake ..
         cmake --build ..
