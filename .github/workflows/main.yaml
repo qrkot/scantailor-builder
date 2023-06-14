@@ -42,11 +42,12 @@ jobs:
       working-directory: ${{ env.WORKDIR }}/build
       run: |
         cpack -G "DEB"
-        ls -lh
 
     - name: Test it
       working-directory: ${{ env.WORKDIR }}/build
       run: |
+        pwd
+        ls -lh
         sudo apt-get install *.deb
         
     - name: Keep it
