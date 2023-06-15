@@ -1,5 +1,5 @@
 # ScanTailor builder for Ubuntu 22
-[ScanTailor](https://scantailor.org/) is no longer developed and [its Github repo](https://github.com/scantailor/scantailor) is archived.
+[ScanTailor](https://scantailor.org/) is no longer maintained and [its Github repo](https://github.com/scantailor/scantailor) is archived.
 
 The latest original ScanTailor was in Ubuntu 18 repo. As of now, it's no longer possible to simply `apt-get install` it on Ubuntu 22.
 
